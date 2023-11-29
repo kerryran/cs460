@@ -1,6 +1,7 @@
 # vim: expandtab:ts=4:sw=4
 import tensorflow as tf
 from tf_slim.training import evaluation as slim
+tf.compat.v1.disable_eager_execution()
 
 
 def _batch_norm_fn(x, scope=None):
@@ -11,7 +12,7 @@ def _batch_norm_fn(x, scope=None):
 
 def create_link(
         incoming, network_builder, scope, nonlinearity=tf.nn.elu,
-        weights_initializer=tf.random.truncated_normal_initializer(stddev=1e-3),
+        weights_initializer=tf.compat.v1.truncated_normal_initializer(stddev=1e-3),
         regularizer=None, is_first=False, summarize_activations=True):
     if is_first:
         network = incoming
@@ -41,7 +42,7 @@ def create_link(
 
 def create_inner_block(
         incoming, scope, nonlinearity=tf.nn.elu,
-        weights_initializer=tf.random.truncated_normal_initializer(1e-3),
+        weights_initializer=tf.compat.v1.truncated_normal_initializer(1e-3),
         bias_initializer=tf.zeros_initializer(), regularizer=None,
         increase_dim=False, summarize_activations=True):
     n = incoming.get_shape().as_list()[-1]
@@ -69,7 +70,7 @@ def create_inner_block(
 
 
 def residual_block(incoming, scope, nonlinearity=tf.nn.elu,
-                   weights_initializer=tf.random.truncated_normal_initializer(1e3),
+                   weights_initializer=tf.compat.v1.truncated_normal_initializer(1e3),
                    bias_initializer=tf.zeros_initializer(), regularizer=None,
                    increase_dim=False, is_first=False,
                    summarize_activations=True):
