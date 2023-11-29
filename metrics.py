@@ -1,6 +1,6 @@
 # vim: expandtab:ts=4:sw=4
 import tensorflow as tf
-import tensorflow.contrib.slim as slim
+from tf_slim.training import evaluation as slim
 
 
 def pdist(a, b=None):

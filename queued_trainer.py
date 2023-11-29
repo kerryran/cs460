@@ -5,7 +5,7 @@ import threading
 import numpy as np
 
 import tensorflow as tf
-import tensorflow.contrib.slim as slim
+from tf_slim.training import evaluation as slim
 
 
 def run_in_batches(f, data_dict, out, batch_size):
