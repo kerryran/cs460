@@ -8,10 +8,10 @@ from . import residual_net
 def create_network(images, num_classes=None, add_logits=True, reuse=None,
                    create_summaries=True, weight_decay=1e-8):
     nonlinearity = tf.nn.elu
-    conv_weight_init = tf.truncated_normal_initializer(stddev=1e-3)
+    conv_weight_init = tf.random.truncated_normal_initializer(stddev=1e-3)
     conv_bias_init = tf.zeros_initializer()
     conv_regularizer = slim.l2_regularizer(weight_decay)
-    fc_weight_init = tf.truncated_normal_initializer(stddev=1e-3)
+    fc_weight_init = tf.random.truncated_normal_initializer(stddev=1e-3)
     fc_bias_init = tf.zeros_initializer()
     fc_regularizer = slim.l2_regularizer(weight_decay)
 
@@ -87,7 +87,7 @@ def create_network(images, num_classes=None, add_logits=True, reuse=None,
         with slim.variable_scope.variable_scope("ball", reuse=reuse):
             weights = slim.model_variable(
                 "mean_vectors", (feature_dim, int(num_classes)),
-                initializer=tf.truncated_normal_initializer(stddev=1e-3),
+                initializer=tf.random.truncated_normal_initializer(stddev=1e-3),
                 regularizer=None)
             scale = slim.model_variable(
                 "scale", (), tf.float32,
