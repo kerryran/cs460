@@ -1,6 +1,6 @@
 # vim: expandtab:ts=4:sw=4
 import tensorflow as tf
-from tensorflow.contrib import slim
+from tf_slim.training import evaluation as slim
 
 
 def _batch_norm_fn(x, scope=None):
