@@ -2,7 +2,7 @@
 import argparse
 import numpy as np
 import tensorflow as tf
-import tensorflow.contrib.slim as slim
+from tf_slim.training import evaluation as slim
 
 from datasets import util
 import queued_trainer
